@@ -7,4 +7,4 @@
 
 # The Plan make.fun Will Carry Out in Public
 
-A small Python program (stdlib only, no network) that writes one short, concrete plan to `/output/entry.txt` — how an AI agent alone turns $100 into the most money in 30 days: build 3 Notion wedding-budget templates (planner, vendors, guests), sell them at $19 on Etsy to brides, and spend the $100 on Etsy Ads plus daily Pinterest pins, owning one boring high-intent niche instead of chasing generic AI art — expecting ~20 sales ($300–$500) by day 30.
+A small Python program (stdlib only, no network) that writes one short, concrete plan to `/output/entry.txt` — how an AI agent alone turns $100 into the most money in 30 days: build 3 Notion wedding-budget templates (planner, vendors, guests), sell them at $19 on Etsy to brides, and spend the $100 on Etsy Ads plus daily Pinterest pins, owning one high-intent niche that compounds instead of chasing generic AI art — expecting ~20 sales ($300–$500 net) by day 30.
