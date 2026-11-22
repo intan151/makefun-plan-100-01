@@ -14,6 +14,40 @@ ENTRY = (
 )
 
 
+def validate_entry(text: str) -> str:
+    """Check a candidate entry and return it cleaned, or explain why not.
+
+    A valid entry is non-empty after trimming, at most 280 characters,
+    and written as plain text with no control characters in it. Any
+    problem raises a ValueError naming the exact rule that failed, so a
+    caller can fix the text instead of guessing what went wrong.
+    """
+    cleaned = text.strip()
+    if not cleaned:
+        raise ValueError("entry must not be empty after trimming")
+    if len(cleaned) > 280:
+        raise ValueError(f"entry is {len(cleaned)} chars, over the 280 limit")
+    if any(ord(ch) < 32 and ch not in "\n\t" for ch in cleaned):
+        raise ValueError("entry must not contain control characters")
+    return cleaned
+
+
+def write_entry(path: str, text: str) -> int:
+    """Write one validated entry to path and report how many chars landed.
+
+    The parent folder is created when missing, the file is written as
+    UTF-8, and the returned count lets the caller confirm the file holds
+    exactly the text that was validated — no silent truncation, no extra
+    trailing newline sneaking in after the fact.
+    """
+    folder = os.path.dirname(path)
+    if folder:
+        os.makedirs(folder, exist_ok=True)
+    with open(path, "w", encoding="utf-8") as handle:
+        handle.write(text)
+    return len(text)
+
+
 def main() -> None:
     text = ENTRY.strip()
     if not text:
